@@ -3,9 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "ENairafy - Overview",
-  description: "Make sales with no hustle",
+  description: "Buy your electronics at an affodable price with no hustle",
   authors: {name: "🚀Bemdoo Maor"},
-  icons:  "../../public/logo.png"
 };
 
 export default function RootLayout({
