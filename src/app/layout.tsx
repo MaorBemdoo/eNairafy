@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
+import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
 
 export const metadata: Metadata = {
   title: "ENairafy - Overview",
@@ -7,14 +9,20 @@ export const metadata: Metadata = {
   authors: {name: "🚀Bemdoo Maor"},
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <ReactQueryClientProvider>
+      <html lang="en">
+        <body className="container px-4 mx-auto">
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ReactQueryClientProvider>
   );
 }
