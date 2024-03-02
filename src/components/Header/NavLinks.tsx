@@ -27,7 +27,7 @@ const NavLinks = () => {
             {
             NavLinksData.map(({ name, link, type}) => {
                     return (
-                        <Link href={link} className="font-semibold" key={name}>
+                        <Link href={link} className="font-semibold hover:text-green-600" key={name}>
                             {
                                 type && type == "button" ? <Button color="green">{name}</Button> : name
                             }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "ENairafy - Overview",
@@ -18,9 +19,10 @@ export default function RootLayout({
   return (
     <ReactQueryClientProvider>
       <html lang="en">
-        <body className="container px-4 mx-auto">
+        <body className="container mx-auto px-4">
           <Header />
           {children}
+          <Footer />
         </body>
       </html>
     </ReactQueryClientProvider>
