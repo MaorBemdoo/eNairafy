@@ -5,8 +5,8 @@ import NavLinks from "./NavLinks"
 
 const Header = () => {
     return (
-        <header>
-            <Link href="/"><Image src={logo} alt="ENairafy Logo" height={100} width={200} priority/></Link>
+        <header className="py-4 flex justify-between items-center">
+            <Link href="/"><Image src={logo} alt="ENairafy Logo" height={70} width={150} priority/></Link>
             <NavLinks />
         </header>
     )
