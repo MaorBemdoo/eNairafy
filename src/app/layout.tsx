@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <ReactQueryClientProvider>
       <html lang="en">
-        <body className="relative w-full">
+        <body className="relative w-full selection:bg-green-600">
           <Header />
           {children}
           <Footer />
