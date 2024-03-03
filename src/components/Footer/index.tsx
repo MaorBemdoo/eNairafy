@@ -9,7 +9,7 @@ import displayHeaderFooter from "@/utils/displayHeaderFooter"
 
 const Footer = () => {
     return !displayHeaderFooter() && (
-        <footer className={`${styles.footer} bg-slate-950 absolute left-0 bottom-0 w-full text-white`}>
+        <footer className={`${styles.footer} bg-slate-950 w-full text-white`}>
             <div className="container mx-auto p-4 flex md:flex-col md:items-center md:text-center justify-between items-start gap-3 md:gap-5">
                 <div>
                     <Link href="/" className="w-fit"><Image src={logo} className="brightness-[90000]" alt="ENairafy Logo" height={70} width={150} priority/></Link>
