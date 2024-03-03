@@ -7,9 +7,22 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      
+    screens: {
+      '2xl': {max: '1535px'},
+      xl: {max: '1279px'},
+      lg: {max: '1023px'},
+      md: {max: '767px'},
+      sm: {max: '639px'},
     },
+    container: {
+      screens: {
+        '2xl': '1536px',
+        xl: '1280px',
+        lg: '1024px',
+        md: '768px',
+        sm: '640px',
+      },
+    }
   },
   plugins: [require("daisyui")],
   daisyui: {
