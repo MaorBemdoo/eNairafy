@@ -1,10 +1,8 @@
-"use client";
-
-const displayHeaderFooter = () => {
+const displayHeaderFooter = (pathname: string): boolean => {
     return (
-        location.pathname === "/login" ||
-        location.pathname === "/signup" ||
-        location.pathname === "/reset-password"
+        pathname === "/login" ||
+        pathname === "/signup" ||
+        pathname === "/reset-password"
     );
 };
 

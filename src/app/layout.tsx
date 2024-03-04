@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.scss";
 import Header from "@/components/Header";
 import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
 import Footer from "@/components/Footer";

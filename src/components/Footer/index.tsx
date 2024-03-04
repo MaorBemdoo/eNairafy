@@ -4,12 +4,11 @@ import Image from "next/image"
 import Link from "next/link"
 import logo from "../../../public/full-logo.png"
 import Icons from "./Icons"
-import styles from "./index.module.scss"
 import displayHeaderFooter from "@/utils/displayHeaderFooter"
 
 const Footer = () => {
-    return !displayHeaderFooter() && (
-        <footer className={`${styles.footer} bg-slate-950 w-full text-white`}>
+    return !displayHeaderFooter(location.pathname) && (
+        <footer className="bg-slate-950 w-full text-white">
             <div className="container mx-auto p-4 flex md:flex-col md:items-center md:text-center justify-between items-start gap-3 md:gap-5">
                 <div>
                     <Link href="/" className="w-fit"><Image src={logo} className="brightness-[90000]" alt="ENairafy Logo" height={70} width={150} priority/></Link>
