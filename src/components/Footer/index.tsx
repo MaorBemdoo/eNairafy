@@ -5,9 +5,13 @@ import Link from "next/link"
 import logo from "../../../public/full-logo.png"
 import Icons from "./Icons"
 import displayHeaderFooter from "@/utils/displayHeaderFooter"
+import { usePathname } from "next/navigation"
 
 const Footer = () => {
-    return !displayHeaderFooter(location.pathname) && (
+
+    const pathname = usePathname()
+
+    return !displayHeaderFooter(pathname) && (
         <footer className="bg-slate-950 w-full text-white">
             <div className="container mx-auto p-4 flex md:flex-col md:items-center md:text-center justify-between items-start gap-3 md:gap-5">
                 <div>

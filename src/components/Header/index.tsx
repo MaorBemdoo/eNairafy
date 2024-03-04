@@ -5,9 +5,13 @@ import logo from "../../../public/full-logo.png"
 import Link from "next/link"
 import NavLinks from "./NavLinks"
 import displayHeaderFooter from "@/utils/displayHeaderFooter"
+import { usePathname } from "next/navigation"
 
 const Header = () => {
-    return !displayHeaderFooter(location.pathname) && (
+
+    const pathname = usePathname()
+
+    return !displayHeaderFooter(pathname) && (
         <header className="container mx-auto p-4 flex justify-between items-center">
             <Link href="/"><Image src={logo} alt="ENairafy Logo" height={70} width={150} priority/></Link>
             <NavLinks />
