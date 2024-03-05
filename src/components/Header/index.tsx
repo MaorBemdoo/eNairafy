@@ -12,7 +12,7 @@ const Header = () => {
     const pathname = usePathname()
 
     return !displayHeaderFooter(pathname) && (
-        <header className="container mx-auto p-4 flex justify-between items-center">
+        <header className="container mx-auto p-4 flex justify-between items-center mobile:justify-center">
             <Link href="/"><Image src={logo} alt="ENairafy Logo" height={70} width={150} priority/></Link>
             <NavLinks />
         </header>
