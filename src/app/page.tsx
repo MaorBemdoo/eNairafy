@@ -1,6 +1,7 @@
 "use client"
 
 import Button from "@/components/Button";
+import LogoSlider from "@/components/LogoSlider";
 import Link from "next/link";
 
 export default function Home() {
@@ -16,9 +17,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div>
-          {/* Companies sponsors like samsung */}
-        </div>
+        <LogoSlider />
       </section>
       <section id="categories" className="container mx-auto px-4">
         <h1>Top Categories</h1>

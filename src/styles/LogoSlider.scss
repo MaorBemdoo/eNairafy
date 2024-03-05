@@ -1,0 +1,12 @@
+.slider-anim{
+    animation: 20s slide infinite linear;
+}
+
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
