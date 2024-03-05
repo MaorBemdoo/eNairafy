@@ -47,7 +47,7 @@ const mappedLogos = LogosData.map((name) => {
 
 const LogoSlider = () => {
     return (
-        <div className="overflow-hidden whitespace-nowrap *:px-5">
+        <div className="relative overflow-hidden whitespace-nowrap *:px-5 before:content-[''] before:absolute before:left-0 before:bg-gradient-to-l before:from-transparent before:to-white before:w-[100px] before:h-full before:z-10 after:content-[''] after:absolute after:right-0 after:bg-gradient-to-r after:from-transparent after:to-white after:w-[100px] after:h-full after:z-10">
             <div className="w-max inline-block space-x-10 slider-anim">
                 {mappedLogos}
             </div>
