@@ -20,7 +20,7 @@ export default function Home() {
         <LogoSlider />
       </section>
       <section id="categories" className="container mx-auto px-4">
-        <h1>Top Categories</h1>
+        <h1 className="text-5xl font-bold">Top Categories</h1>
       </section>
     </main>
   );

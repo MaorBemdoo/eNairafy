@@ -37,7 +37,7 @@ const NavLinks = () => {
                                 type && type == "button" ? <Button color="green">{name}</Button> : (
                                     <div className="flex gap-2 items-center first:*:hover:rotate-12">
                                         {
-                                            typeof Icon !== 'undefined' ? <Icon className="text-4xl"/> : ""
+                                            typeof Icon !== 'undefined' ? <Icon className="text-4xl transition-all"/> : ""
                                         }
                                         <p className="sm:none">{name}</p>
                                     </div>
