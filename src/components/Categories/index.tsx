@@ -15,7 +15,7 @@ const Categories = ({ categories }: {categories: any}) => {
             return categories.data["data"].map(({ id, slug, name, assets, description }: CategoriesType) => {
                 return (
                     <div className="card h-96 w-auto bg-base-100 shadow-xl" key={id}>
-                        <figure><Image src={assets ? assets[0].url : ""} alt={`${name} image`} height={200} width={250} className="w-full h-[200px] object-cover" /></figure>
+                        <figure><Image src={assets ? assets[0].url : ""} alt={`${name} image`} height={200} width={250} className="w-full h-[200px] object-cover hover:scale-125 transition-all" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">
                                 {name}
