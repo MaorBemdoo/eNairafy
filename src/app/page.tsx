@@ -1,10 +1,14 @@
-"use client"
-
 import Button from "@/components/Button";
+import Categories from "@/components/Categories";
 import LogoSlider from "@/components/LogoSlider";
+import { getCategories } from "@/utils/getCategories";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+
+  const categories = await getCategories()
+  // console.log(categories)
+
   return (
     <main>
       <section className="w-full" id="hero">
@@ -19,14 +23,7 @@ export default function Home() {
         </div>
         <LogoSlider />
       </section>
-      <section id="categories" className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold mobile:break-all">Top Categories</h1>
-        <div>
-          <div className="card">
-            Cat1
-          </div>
-        </div>
-      </section>
+      <Categories categories={categories}/>
     </main>
   );
 }
