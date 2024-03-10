@@ -5,15 +5,12 @@ import Button from "./Button";
 import { CategoriesPageType, CategoriesType } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "@/utils/getCategories";
-import { useTransition } from "react"
 
 const gCategories = async () => {
     return await getCategories()
 }
 
 const Categories = () => {
-
-    const [isPending, startTransition] = useTransition()
     
     const {data, error, isError, isSuccess, isLoading, refetch} = useQuery({
         queryKey: ["categories"],
