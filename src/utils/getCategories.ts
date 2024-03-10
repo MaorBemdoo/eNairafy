@@ -17,21 +17,10 @@ export const getCategories = async () => {
         headers: headersList,
     };
 
-    try{
+    try {
         const res = await axios.request(reqOptions);
-        return {
-            data: res.data,
-            error: "",
-            isError: false,
-            isSuccess: true
-        }
-    }catch(err){
-        return {
-            data: "",
-            error: err,
-            isError: true,
-            isSuccess: false
-        }
+        return res.data;
+    } catch (err) {
+        return err;
     }
-
 };

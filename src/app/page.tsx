@@ -5,7 +5,7 @@ import { getCategories } from "@/utils/getCategories";
 import Link from "next/link";
 
 export default async function Home() {
-
+  
   const categories = await getCategories()
 
   return (

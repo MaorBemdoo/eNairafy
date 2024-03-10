@@ -1,42 +1,46 @@
+"use client"
+
 import Image from "next/image";
 import Button from "./Button";
 import { CategoriesPageType, CategoriesType } from "@/types";
+import { useQuery } from "@tanstack/react-query";
+import { getCategories } from "@/utils/getCategories";
+import { useTransition } from "react"
 
-const Categories = ({ categories }: { categories: any }) => {
+const Categories = ({ categories }: {categories: any}) => {
+
+    const [isPending, startTransition] = useTransition()
+    
+    const {data, error, isError, isSuccess, isLoading, refetch} = useQuery({
+        queryKey: ["categories"],
+        queryFn: async () => startTransition(await getCategories()),
+        initialData: categories
+    })
+
     const displayCategoriesCard = () => {
-        if (categories.isError) {
-            console.log(categories.error);
+        if (isLoading) {
+        return <div className="loading loading-spinner loading-lg"></div>
+        }
+        if (isError) {
+            console.log(error);
             return (
                 <div>
                     <p>An Error Occured</p>
-                    <Button color="green">Try Again</Button>
+                    <Button color="green" onClick={refetch}>Try Again</Button>
                 </div>
             );
         }
-        if (categories.isSuccess) {
+        if (isSuccess) {
             // console.log(data)
-            return categories.data["data"].map(
+            return data.data.map(
                 ({ id, slug, name, assets, description }: CategoriesType) => {
                     return (
-                        <div
-                            className="card h-96 w-auto bg-base-100 shadow-xl"
-                            key={id}
-                        >
-                            <figure>
-                                <Image
-                                    src={assets ? assets[0].url : ""}
-                                    alt={`${name} image`}
-                                    height={200}
-                                    width={250}
-                                    className="w-full h-[200px] object-cover hover:scale-125 transition-all"
-                                />
-                            </figure>
+                        <div className="card h-96 w-auto bg-base-100 shadow-xl" key={id}>
+                            <figure><Image src={assets ? assets[0].url : ""} alt={`${name} image`} height={200} width={250} className="w-full h-[200px] object-cover hover:scale-125 transition-all"/></figure>
                             <div className="card-body">
                                 <h2 className="card-title">
                                     {name}
-                                    <div className="badge badge-secondary">
-                                        NEW
-                                    </div>
+                                    <div className="badge badge-secondary">NEW</div>
                                 </h2>
                                 <p>{description}</p>
                                 <div className="card-actions">

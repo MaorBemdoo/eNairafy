@@ -17,14 +17,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ReactQueryClientProvider>
-      <html lang="en">
+    <html lang="en">
         <body className="relative w-full mobile:text-center selection:bg-green-600 selection:text-white">
           <Header />
-          {children}
+          <ReactQueryClientProvider>
+            {children}
+          </ReactQueryClientProvider>
           <Footer />
         </body>
-      </html>
-    </ReactQueryClientProvider>
+    </html>
   );
 }

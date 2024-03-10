@@ -3,6 +3,7 @@ import { z } from "zod"
 export const ButtonSchema = z.object({
     children: z.any().optional(), 
     color: z.enum(["green", "black"]),
+    onClick: z.function().args(z.any()).returns(z.any()).optional(),
     className: z.string().optional()
 })
 
