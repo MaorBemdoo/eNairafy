@@ -7,19 +7,22 @@ import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "@/utils/getCategories";
 import { useTransition } from "react"
 
-const Categories = ({ categories }: {categories: any}) => {
+const gCategories = async () => {
+    return await getCategories()
+}
+
+const Categories = () => {
 
     const [isPending, startTransition] = useTransition()
     
     const {data, error, isError, isSuccess, isLoading, refetch} = useQuery({
         queryKey: ["categories"],
-        queryFn: async () => startTransition(await getCategories()),
-        initialData: categories
+        queryFn: gCategories,
     })
 
     const displayCategoriesCard = () => {
         if (isLoading) {
-        return <div className="loading loading-spinner loading-lg"></div>
+            return <div className="loading loading-spinner loading-lg"></div>
         }
         if (isError) {
             console.log(error);
