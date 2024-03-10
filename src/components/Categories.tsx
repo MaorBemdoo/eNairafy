@@ -6,7 +6,12 @@ const Categories = ({ categories }: { categories: any }) => {
     const displayCategoriesCard = () => {
         if (categories.isError) {
             console.log(categories.error);
-            return <div>An Error Occured</div>;
+            return (
+                <div>
+                    <p>An Error Occured</p>
+                    <Button color="green">Try Again</Button>
+                </div>
+            );
         }
         if (categories.isSuccess) {
             // console.log(data)
