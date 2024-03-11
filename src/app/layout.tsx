@@ -3,6 +3,7 @@ import "@/styles/globals.scss";
 import Header from "@/components/Header";
 import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
 import Footer from "@/components/Footer";
+import { baseUrl } from "@/constants";
 
 export const metadata: Metadata = {
   title: "ENairafy - Overview",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   authors: {name: "🚀Bemdoo Maor"},
   openGraph: {
     type: "website",
-    url: "https://enairafy.vercel.app",
+    url: `${baseUrl}`,
     title: "ENairafy - Overview",
     description: "Buy your electronics at an affodable price with no hustle",
     siteName: "ENairafy",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "https://enairafy.vercel.app",
+    site: `${baseUrl}`,
     creator: "@BemdooMaor",
     title: "ENairafy - Overview",
     description: "Buy your electronics at an affodable price with no hustle",
