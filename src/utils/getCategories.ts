@@ -18,5 +18,5 @@ export const getCategories = async () => {
     };
 
     const res = await axios.request(reqOptions);
-    console.log(res);
+    return res.data
 };

@@ -12,7 +12,7 @@ const gCategories = async () => {
 
 const Categories = () => {
     
-    const {data, error, isError, isSuccess, isLoading, refetch}: any = useQuery({
+    const {data, error, isError, isSuccess, isLoading, refetch} = useQuery({
         queryKey: ["categories"],
         queryFn: gCategories,
     })
