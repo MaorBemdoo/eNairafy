@@ -37,6 +37,7 @@ const mappedLogos = LogosData.map((name) => {
             alt={`${name} logo`}
             height={100}
             width={150}
+            priority
             className="inline-block grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all sm:w-[100px]"
             onMouseEnter={pauseAnim}
             onMouseLeave={continueAnim}

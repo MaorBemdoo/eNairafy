@@ -1,17 +1,11 @@
 import Button from "@/components/Button";
 import Categories from "@/components/Categories";
+import HomeDiscount from "@/components/HomeDiscount";
 import LogoSlider from "@/components/LogoSlider";
 import { getCategories } from "@/utils/getCategories";
-import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import Link from "next/link";
 
 export default async function Home() {
-
-  const queryClient = new QueryClient()
-  await queryClient.prefetchQuery({
-    queryKey: ["categories"],
-    queryFn: getCategories
-  })
 
   return (
     <main>
@@ -27,9 +21,8 @@ export default async function Home() {
         </div>
         <LogoSlider />
       </section>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <Categories />
-      </HydrationBoundary>
+      <Categories/>
+      <HomeDiscount />
     </main>
   );
 }

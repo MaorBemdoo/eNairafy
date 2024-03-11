@@ -17,10 +17,6 @@ export const getCategories = async () => {
         headers: headersList,
     };
 
-    try {
-        const res = await axios.request(reqOptions);
-        return res.data;
-    } catch (err) {
-        return err;
-    }
+    const res = await axios.request(reqOptions);
+    console.log(res);
 };
