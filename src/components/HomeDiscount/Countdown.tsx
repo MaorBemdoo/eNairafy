@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { fetchCountdown } from "@/utils/actions/fetchCountdown";
+export const revalidate = 0;
 
 const getTimefromFetchedCoutDown = async () => {
     return await fetchCountdown();
