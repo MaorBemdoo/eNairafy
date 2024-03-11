@@ -59,7 +59,7 @@ const Categories = () => {
             <h1 className="mb-4 text-5xl font-bold mobile:break-all">
                 Top Categories
             </h1>
-            <div className="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4">
+            <div className="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4 mobile:grid-cols-none mobile:grid-flow-col">
                 {displayCategoriesCard()}
             </div>
         </section>
