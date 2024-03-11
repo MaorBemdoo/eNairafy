@@ -24,7 +24,7 @@ const config: Config = {
         sm: '640px',
       },
       center: true,
-      padding: "0 1rem"
+      padding: "1rem"
     }
   },
   plugins: [require("daisyui")],
