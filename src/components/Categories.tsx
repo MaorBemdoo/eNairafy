@@ -19,12 +19,12 @@ const Categories = () => {
 
     const displayCategoriesCard = () => {
         if (isLoading) {
-            return <div className="loading loading-spinner loading-lg"></div>
+            return <div className="loading loading-spinner loading-lg place-self-center"></div>
         }
         if (isError) {
             console.log(error);
             return (
-                <div>
+                <div className="place-self-center">
                     <p>An Error Occured</p>
                     <Button color="green" onClick={refetch}>Try Again</Button>
                 </div>
