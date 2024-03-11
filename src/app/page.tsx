@@ -5,8 +5,6 @@ import LogoSlider from "@/components/LogoSlider";
 import { getCategories } from "@/utils/actions/getCategories";
 import Link from "next/link";
 
-export const revalidate = 0;
-
 export default async function Home() {
     return (
         <main>
