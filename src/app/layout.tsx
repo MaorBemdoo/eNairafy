@@ -8,6 +8,24 @@ export const metadata: Metadata = {
   title: "ENairafy - Overview",
   description: "Buy your electronics at an affodable price with no hustle",
   authors: {name: "🚀Bemdoo Maor"},
+  openGraph: {
+    type: "website",
+    url: "https://enairafy.vercel.app",
+    title: "ENairafy - Overview",
+    description: "Buy your electronics at an affodable price with no hustle",
+    siteName: "ENairafy",
+    images: [{
+      url: "/full-logo.png",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "https://enairafy.vercel.app",
+    creator: "@BemdooMaor",
+    title: "ENairafy - Overview",
+    description: "Buy your electronics at an affodable price with no hustle",
+    "images": "/full-logo.png" 
+  }
 };
 
 
