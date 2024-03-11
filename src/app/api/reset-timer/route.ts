@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-export const invalidate = 0;
+export const revalidate = 0;
 export async function GET(req: NextRequest){
     const authHeader = req.headers.get('Authorization');
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
