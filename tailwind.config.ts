@@ -23,6 +23,8 @@ const config: Config = {
         md: '768px',
         sm: '640px',
       },
+      center: true,
+      padding: "0 1rem"
     }
   },
   plugins: [require("daisyui")],

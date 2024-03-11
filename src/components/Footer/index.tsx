@@ -13,7 +13,7 @@ const Footer = () => {
 
     return !displayHeaderFooter(pathname) && (
         <footer className="bg-slate-950 w-full text-white mobile:mb-[10vh] c-footer">
-            <div className="container mx-auto p-4 flex md:flex-col md:items-center md:text-center justify-between items-start gap-3 md:gap-5 mobile:break-all">
+            <div className="container py-4 flex md:flex-col md:items-center md:text-center justify-between items-start gap-3 md:gap-5 mobile:break-all">
                 <div>
                     <Link href="/" className="w-fit"><Image src={logo} className="brightness-[90000]" alt="ENairafy Logo" height={70} width={150} priority/></Link>
                     <p>Buy your elctronics at an affodable rate with no hustle</p>

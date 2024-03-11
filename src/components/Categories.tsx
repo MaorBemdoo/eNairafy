@@ -55,7 +55,7 @@ const Categories = () => {
     };
 
     return (
-        <section id="categories" className="container mx-auto mb-4 px-4">
+        <section id="categories" className="container mb-4">
             <h1 className="mb-4 text-5xl font-bold mobile:break-all">
                 Top Categories
             </h1>
