@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Countdown from "./Countdown"
+import DiscountProducts from "./DiscountProducts"
 
 const HomeDiscount = () => {
     return (
@@ -12,6 +13,7 @@ const HomeDiscount = () => {
                     </h1>
                     <Countdown/>
                 </div>
+                <DiscountProducts />
             </div>
         </section>
     )
