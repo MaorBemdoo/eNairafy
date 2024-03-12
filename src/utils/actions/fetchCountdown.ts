@@ -2,6 +2,7 @@
 
 import { baseUrl } from "@/constants";
 import axios from "axios";
+import { revalidatePath } from "next/cache";
 
 export const fetchCountdown = async () => {
     try {
@@ -23,4 +24,5 @@ export const fetchCountdown = async () => {
     } catch (error) {
         console.error("Error fetching countdown:", error);
     }
+    revalidatePath("/")
 };

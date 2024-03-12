@@ -1,6 +1,6 @@
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
-export const fetchCache = "force-no-store"
+// export const dynamic = 'force-dynamic'
+// export const revalidate = 0
+// export const fetchCache = "force-no-store"
 
 import { NextResponse, type NextRequest } from "next/server";
 
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest){
         const now = new Date();
         const midnight = new Date(now)
         midnight.setHours(24, 0, 0, 0); // Set to midnight
-        const timeUntilMidnight = midnight.getTime() - now.getTime();;
+        const timeUntilMidnight = midnight.getTime() - now.getTime();
 
         // Send the time until midnight as the new countdown value
         return NextResponse.json({ countdown: timeUntilMidnight }, {
