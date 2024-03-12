@@ -23,6 +23,7 @@ export const fetchCountdown = async () => {
         }
     } catch (error) {
         console.error("Error fetching countdown:", error);
+    }finally{
+        revalidatePath("/")
     }
-    revalidatePath("/")
 };
