@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { fetchCountdown } from "@/utils/actions/fetchCountdown";
-
-const getTimefromFetchedCoutDown = async () => {
-    return await fetchCountdown();
-};
+import moment from "moment";
 
 const Countdown = () => {
     const [seconds, setSeconds] = useState(0);
@@ -14,15 +10,22 @@ const Countdown = () => {
     const [hours, setHours] = useState(0);
 
     useEffect(() => {
-        const intervalId = setInterval(async () => {
-            try {
-                const time: any = await getTimefromFetchedCoutDown();
-                setSeconds(time.seconds);
-                setMinutes(time.minutes);
-                setHours(time.hours);
-            } catch (err) {
-                console.log(err);
+        const intervalId = setInterval(() => {
+            const now = moment();
+            const midnight = moment().startOf('day');  // Set to midnight
+            let timeUntilMidnight = midnight.diff(now);
+            if (timeUntilMidnight < 0) {
+                midnight.add(1, 'days');
+                timeUntilMidnight = midnight.diff(now);
             }
+
+            const remainingSeconds = Math.floor(timeUntilMidnight / 1000);
+            const remainingMinutes = Math.floor(remainingSeconds / 60) % 60;
+            const remainingHours = Math.floor(remainingSeconds / (60 * 60));
+
+            setSeconds(remainingSeconds % 60);
+            setMinutes(remainingMinutes);
+            setHours(remainingHours);
         }, 1000);
 
         return () => clearInterval(intervalId);
