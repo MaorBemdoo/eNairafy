@@ -1,6 +1,10 @@
+
+
 const DiscountProducts = () => {
     return (
-        <div>DiscountProducts</div>
+        <div>
+
+        </div>
     )
 }
 export default DiscountProducts
