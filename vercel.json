@@ -1,7 +1,7 @@
 {
     "crons": [
         {
-            "path": "/api/reset-timer",
+            "path": "/api/discount",
             "schedule": "0 0 * * *"
         }
     ]
