@@ -28,6 +28,6 @@ export async function createDiscount(){
 
     axios.post("https://api.chec.io/v1/discounts", {
         headers: headers,
-        body: JSON.stringify(discountBody)
+        data: JSON.stringify(discountBody)
     }).then(res => res).catch(err => console.log(err))
 }
