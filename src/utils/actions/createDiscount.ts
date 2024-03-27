@@ -26,8 +26,7 @@ export async function createDiscount(){
         expires_on: midnight,
     }
 
-    axios.post("https://api.chec.io/v1/discounts", {
-        headers: headers,
-        data: JSON.stringify(discountBody)
+    axios.post("https://api.chec.io/v1/discounts", JSON.stringify(discountBody), {
+        headers
     }).then(res => res).catch(err => console.log(err))
 }
