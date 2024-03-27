@@ -20,6 +20,6 @@ export async function GET(req: NextRequest){
         return NextResponse.json({
             message: "Error either creating or deleting discount",
             description: err
-        })
+        }, {status: 500})
     }
 }
