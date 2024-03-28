@@ -1,9 +1,13 @@
+import { getDiscountProducts } from "@/utils/actions/getDiscountProducts"
 
+const DiscountProducts = async () => {
 
-const DiscountProducts = () => {
+    const discountProducts = await getDiscountProducts()
+    console.log(discountProducts)
+
     return (
         <div>
-
+            
         </div>
     )
 }

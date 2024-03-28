@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-export async function getProducts(params: any) {
+export async function getProducts(params?: any) {
 
     const res = await axios.get("https://api.chec.io/v1/products", {
         headers: {
