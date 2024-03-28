@@ -1,5 +1,4 @@
 import { createDiscount } from "@/utils/actions/createDiscount";
-import { deleteDiscount } from "@/utils/actions/deleteDiscount";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(req: NextRequest){
@@ -14,11 +13,10 @@ export async function GET(req: NextRequest){
 
     try {
         await createDiscount()
-        await deleteDiscount()
-        return NextResponse.json({ message: `Created new discount and deleted former one` }, {status: 200})
+        return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
         return NextResponse.json({
-            message: "Error either creating or deleting discount",
+            message: "Error creating discount",
             description: err
         }, {status: 500})
     }
