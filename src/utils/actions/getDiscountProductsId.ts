@@ -1,28 +1,23 @@
 "use server"
 
-import axios from "axios";
+import { getProducts } from "./getProducts";
 
-export async function getDiscountProductsId(){
+export async function getDiscountProductsId(/*type: "new" | "fetch"*/){
+    // if(type == "fetch"){
+    //     return;
+    // }
 
-    let reqOptions = {
-        url: "https://api.chec.io/v1/products",
-        method: "GET",
-        params: {
-            limit: 50
-        },
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "X-Authorization":  process.env.COMMERCEJS_X_Authorization_KEY
-        },
+    try {
+        let data = await getProducts({limit: 50})
+        // console.log(response.data);
+    
+        const shuffledProducts = data.data.sort(() => Math.random() - 0.5);
+    
+        const randomProductIds = shuffledProducts.slice(0, 10).map((product: any) => product.id);
+    
+        return randomProductIds;
+    } catch (err) {
+        console.log(err)
+        return err;
     }
-    
-    let response = await axios.request(reqOptions);
-    // console.log(response.data);
-
-    const shuffledProducts = response.data.data.sort(() => Math.random() - 0.5);
-
-    const randomProductIds = shuffledProducts.slice(0, 10).map((product: any) => product.id);
-    
-    return randomProductIds;
 }

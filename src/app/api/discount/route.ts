@@ -1,4 +1,5 @@
 import { createDiscount } from "@/utils/actions/createDiscount";
+import { writeFile } from "fs/promises";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(req: NextRequest){
@@ -10,6 +11,7 @@ export async function GET(req: NextRequest){
         return NextResponse.json({ message: 'Forbidden' }, {status: 403});
     }
 
+    // writeFile(`${process.cwd()}/src/constants/discount.txt`, "Testing").then(res => console.log(res)).catch(err => console.log(err))
 
     try {
         await createDiscount()

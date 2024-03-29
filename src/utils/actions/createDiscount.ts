@@ -2,10 +2,10 @@
 
 import axios from "axios";
 import moment from "moment";
-import { getDiscountProductsId } from "./getDiscountProductsId"
+import { getDiscountProductsId } from "./getDiscountProductsId";
 
 export async function createDiscount(){
-    const discountProducts = await getDiscountProductsId()
+    const discountProductsId = await getDiscountProductsId()
 
     const randomPercent = Math.floor(Math.random() * (90 - 20 + 1)) + 20 // generate random value from 20 to 90
 
@@ -21,7 +21,7 @@ export async function createDiscount(){
         // code: Math.random(),
         type: "percentage",
         value: randomPercent,
-        product_ids: discountProducts,
+        product_ids: discountProductsId,
         expires: true,
         expires_on: midnight,
     }

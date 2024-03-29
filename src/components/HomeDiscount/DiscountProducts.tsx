@@ -7,7 +7,15 @@ const DiscountProducts = async () => {
 
     return (
         <div>
-            
+            {
+                // discountProducts.map(({}) => {
+                //     return (
+                //         <div>
+                                
+                //         </div>
+                //     )
+                // })
+            }
         </div>
     )
 }
