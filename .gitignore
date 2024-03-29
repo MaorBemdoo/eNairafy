@@ -15,6 +15,7 @@
 
 # production
 /build
+/src/constants/discount.txt
 
 # misc
 .DS_Store
