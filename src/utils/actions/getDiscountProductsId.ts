@@ -1,14 +1,14 @@
 "use server"
 
-import { readFile } from "fs/promises";
+import { readFile, rm } from "fs/promises";
 import { getProducts } from "./getProducts";
 
 export async function getDiscountProductsId(type: "new" | "fetch"){
     if(type == "fetch"){
         try {
-            await readFile(`${process.cwd()}/src/constants/discount.txt`, {encoding: "utf8"}).then(content => {
-                console.log(content)
-            })
+            const content = await readFile(`${process.cwd()}/src/constants/discount.txt`, {encoding: "utf8"})
+            console.log(content)
+            await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
         } catch (err) {
             console.log(err)
             return err;
