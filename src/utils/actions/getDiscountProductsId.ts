@@ -8,12 +8,12 @@ export async function getDiscountProductsId(type: "new" | "fetch"){
         try {
             const content = await readFile(`${process.cwd()}/src/constants/discount.txt`, {encoding: "utf8"})
             console.log(content)
-            await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
+            // await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
+            return content;
         } catch (err) {
             console.log(err)
             return err;
         }
-        return;
     }
 
     let data = await getProducts({limit: 50})

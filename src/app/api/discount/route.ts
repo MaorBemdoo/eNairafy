@@ -13,6 +13,7 @@ export async function GET(req: NextRequest){
     
     try {
         const newDiscount = await createDiscount()
+        // const newDiscount = "Testing"
         await writeFile(`${process.cwd()}/src/constants/discount.txt`, `${JSON.stringify(newDiscount)}`).then(res => res).catch(err => console.log(err))
         return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
