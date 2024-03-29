@@ -10,11 +10,10 @@ export async function GET(req: NextRequest){
     if (req.headers.get("Authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
         return NextResponse.json({ message: 'Forbidden' }, {status: 403});
     }
-
-    // writeFile(`${process.cwd()}/src/constants/discount.txt`, "Testing").then(res => console.log(res)).catch(err => console.log(err))
-
+    
     try {
-        await createDiscount()
+        const newDiscount = await createDiscount()
+        await writeFile(`${process.cwd()}/src/constants/discount.txt`, `${JSON.stringify(newDiscount)}`).then(res => res).catch(err => console.log(err))
         return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
         return NextResponse.json({

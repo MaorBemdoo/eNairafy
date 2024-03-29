@@ -5,7 +5,7 @@ import moment from "moment";
 import { getDiscountProductsId } from "./getDiscountProductsId";
 
 export async function createDiscount(){
-    const discountProductsId = await getDiscountProductsId()
+    const discountProductsId = await getDiscountProductsId("new")
 
     const randomPercent = Math.floor(Math.random() * (90 - 20 + 1)) + 20 // generate random value from 20 to 90
 
@@ -26,7 +26,9 @@ export async function createDiscount(){
         expires_on: midnight,
     }
 
-    await axios.post("https://api.chec.io/v1/discounts", JSON.stringify(discountBody), {
+    const res = await axios.post("https://api.chec.io/v1/discounts", JSON.stringify(discountBody), {
         headers
-    }).then(res => res).catch(err => console.log(err))
+    })
+
+    return res.data
 }
