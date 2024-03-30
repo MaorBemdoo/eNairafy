@@ -9,7 +9,7 @@ export async function getDiscountProductsId(type: "new" | "fetch"){
             const content = await readFile(`${process.cwd()}/src/constants/discount.txt`, {encoding: "utf8"})
             console.log(JSON.parse(content))
             // await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
-            return content;
+            return JSON.parse(content).product_ids;
         } catch (err) {
             console.log(err)
             return err;
