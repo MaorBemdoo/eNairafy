@@ -6,7 +6,7 @@ import { getProducts } from "./getProducts";
 export async function getDiscountProductsId(type: "new" | "fetch"){
     if(type == "fetch"){
         try {
-            const content = await readFile(`${process.cwd()}/src/constants/discount.txt`, {encoding: "utf8"})
+            const content = await readFile(`${process.cwd()}/public/discount.txt`, {encoding: "utf8"})
             console.log(JSON.parse(content))
             // await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
             return JSON.parse(content).product_ids;
