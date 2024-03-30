@@ -1,3 +1,4 @@
+import { baseUrl } from "@/constants";
 import { createDiscount } from "@/utils/actions/createDiscount";
 import { writeFile } from "fs/promises";
 import { NextResponse, type NextRequest } from "next/server";
@@ -13,7 +14,7 @@ export async function GET(req: NextRequest){
     
     try {
         const newDiscount = await createDiscount()
-        await writeFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : "discount.txt" }`, `${JSON.stringify(newDiscount)}`, {flag: "w"}).then(res => res).catch(err => console.log(err))
+        await writeFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : `${baseUrl}/discount.txt` }`, `${JSON.stringify(newDiscount)}`).then(res => res).catch(err => console.log(err))
         return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
         console.log(err)
