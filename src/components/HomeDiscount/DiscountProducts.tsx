@@ -1,4 +1,4 @@
-import { getDiscountProducts } from "@/utils/actions/getDiscountProducts"
+import { getDiscountProducts } from "@/utils/getDiscountProducts"
 
 const DiscountProducts = async () => {
 
@@ -11,7 +11,7 @@ const DiscountProducts = async () => {
                 // discountProducts.map(({}) => {
                 //     return (
                 //         <div>
-                                
+
                 //         </div>
                 //     )
                 // })
