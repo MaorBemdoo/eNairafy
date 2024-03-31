@@ -14,8 +14,7 @@ export async function GET(req: NextRequest){
     
     try {
         const newDiscount = await createDiscount()
-        const discountUrl = new URL(`${baseUrl}/discount.txt`)
-        await writeFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : discountUrl }`, `${JSON.stringify(newDiscount)}`).then(res => res).catch(err => console.log(err))
+        await writeFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : "discount.txt" }`, `${JSON.stringify(newDiscount)}`).then(res => res).catch(err => console.log(err))
         return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
         console.log(err)

@@ -5,8 +5,7 @@ import { baseUrl } from "@/constants";
 export async function getDiscountProductsId(type: "new" | "fetch"){
     if(type == "fetch"){
         try {
-            const discountUrl = new URL(`${baseUrl}/discount.txt`)
-            const content = await readFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : discountUrl }`, {encoding: "utf8"})
+            const content = await readFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : "discount.txt" }`, {encoding: "utf8"})
             console.log(JSON.parse(content))
             // await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
             return JSON.parse(content).product_ids;
