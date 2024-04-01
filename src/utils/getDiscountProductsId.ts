@@ -1,18 +1,12 @@
-import { readFile, rm } from "fs/promises";
+import axios from "axios";
 import { getProducts } from "./actions/getProducts";
 import { baseUrl } from "@/constants";
 
 export async function getDiscountProductsId(type: "new" | "fetch"){
     if(type == "fetch"){
-        try {
-            const content = await readFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : "discount.txt" }`, {encoding: "utf8"})
-            console.log(JSON.parse(content))
-            // await rm(`${process.cwd()}/src/constants/discount.txt`).then(res => res)
-            return JSON.parse(content).product_ids;
-        } catch (err) {
-            console.log(err)
-            return err;
-        }
+        const content = (await axios.get("https://mocki.io/v1/132f0fb6-55f3-4e67-9817-597db3603075")).data
+        console.log(JSON.parse(content))
+        return JSON.parse(content).product_ids;
     }
 
     let data = await getProducts({limit: 50})

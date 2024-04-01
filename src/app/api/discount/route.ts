@@ -1,6 +1,6 @@
 import { baseUrl } from "@/constants";
 import { createDiscount } from "@/utils/actions/createDiscount";
-import { writeFile } from "fs/promises";
+import axios from "axios";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(req: NextRequest){
@@ -14,7 +14,7 @@ export async function GET(req: NextRequest){
     
     try {
         const newDiscount = await createDiscount()
-        await writeFile(`${process.env.NODE_ENV == "development" ? "public/discount.txt" : "discount.txt" }`, `${JSON.stringify(newDiscount)}`).then(res => res).catch(err => console.log(err))
+        await axios.post("https://mocki.io/v1/132f0fb6-55f3-4e67-9817-597db3603075", JSON.stringify(newDiscount))
         return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
         console.log(err)

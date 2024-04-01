@@ -8,10 +8,11 @@ const DiscountProducts = async () => {
     return (
         <div>
             {
+                JSON.stringify(discountProducts)
                 // discountProducts.map(({}) => {
                 //     return (
                 //         <div>
-
+                            
                 //         </div>
                 //     )
                 // })
