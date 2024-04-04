@@ -13,8 +13,7 @@ export async function GET(req: NextRequest){
     }
     
     try {
-        const newDiscount = await createDiscount()
-        await axios.post("https://mocki.io/v1/132f0fb6-55f3-4e67-9817-597db3603075", JSON.stringify(newDiscount))
+        await createDiscount()
         return NextResponse.json({ message: `Created new discount` }, {status: 200})
     } catch (err) {
         console.log(err)

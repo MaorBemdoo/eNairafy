@@ -9,7 +9,7 @@ export async function createDiscount() {
 
     const randomPercent = Math.floor(Math.random() * (90 - 20 + 1)) + 20; // generate random value from 20 to 90
 
-    const midnight = moment().startOf("day").add(1, "day").unix();
+    const midnight = moment().add(24, 'hours').unix();
 
     const headers = {
         "X-Authorization": `${process.env.COMMERCEJS_X_Authorization_KEY}`,
