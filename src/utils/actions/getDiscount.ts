@@ -11,5 +11,5 @@ export async function getDiscount(){
         },
     });
 
-    return res.data.data[0]
+    return res.data.data.slice(0, 5)
 }

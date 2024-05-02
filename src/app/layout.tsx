@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.scss";
 import Header from "@/components/Header";
-import ReactQueryClientProvider from "@/components/ReactQueryClientProvider";
+import ReactQueryClientProvider from "@/app/ReactQueryClientProvider";
 import Footer from "@/components/Footer";
 import { baseUrl } from "@/constants";
 

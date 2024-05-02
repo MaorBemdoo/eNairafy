@@ -5,9 +5,7 @@ import moment from "moment";
 import { getDiscountProductsId } from "../getDiscountProductsId";
 
 export async function createDiscount() {
-    const discountProductsId = await getDiscountProductsId("new");
-
-    const randomPercent = Math.floor(Math.random() * (90 - 20 + 1)) + 20; // generate random value from 20 to 90
+    const discountProductsId: any[] = await getDiscountProductsId("new");
 
     const midnight = moment().add(24, 'hours').unix();
 
@@ -20,19 +18,45 @@ export async function createDiscount() {
     const discountBody = {
         // code: Math.random(),
         type: "percentage",
-        value: randomPercent,
-        product_ids: discountProductsId,
         expires: true,
         expires_on: midnight,
     };
 
-    const res = await axios.post(
+    const res1 = await axios.post(
         "https://api.chec.io/v1/discounts",
-        JSON.stringify(discountBody),
+        JSON.stringify({...discountBody, value: discountProductsId[0].value, product_ids: discountProductsId[0].productIds}),
+        {
+            headers,
+        }
+    );
+    const res2 = await axios.post(
+        "https://api.chec.io/v1/discounts",
+        JSON.stringify({...discountBody, value: discountProductsId[1].value, product_ids: discountProductsId[1].productIds}),
+        {
+            headers,
+        }
+    );
+    const res3 = await axios.post(
+        "https://api.chec.io/v1/discounts",
+        JSON.stringify({...discountBody, value: discountProductsId[2].value, product_ids: discountProductsId[2].productIds}),
+        {
+            headers,
+        }
+    );
+    const res4 = await axios.post(
+        "https://api.chec.io/v1/discounts",
+        JSON.stringify({...discountBody, value: discountProductsId[3].value, product_ids: discountProductsId[3].productIds}),
+        {
+            headers,
+        }
+    );
+    const res5 = await axios.post(
+        "https://api.chec.io/v1/discounts",
+        JSON.stringify({...discountBody, value: discountProductsId[4].value, product_ids: discountProductsId[4].productIds}),
         {
             headers,
         }
     );
 
-    return res.data;
+    return [res1.data, res2.data, res3.data, res4.data, res5.data]
 }

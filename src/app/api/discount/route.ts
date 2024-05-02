@@ -13,8 +13,11 @@ export async function GET(req: NextRequest){
     }
     
     try {
-        await createDiscount()
-        return NextResponse.json({ message: `Created new discount` }, {status: 200})
+        const discounts = await createDiscount()
+        return NextResponse.json({
+            message: 'Created 5 new discounts',
+            ids: discounts.map(discount => discount.id)
+        }, {status: 200})
     } catch (err) {
         console.log(err)
         return NextResponse.json({

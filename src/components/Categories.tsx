@@ -25,7 +25,7 @@ const Categories = () => {
         if (isError) {
             console.log(error);
             return (
-                <div className="place-self-center">
+                <div className="place-self-center text-center">
                     <p>An Error Occured</p>
                     <Button color="green" onClick={refetch}>
                         Try Again
