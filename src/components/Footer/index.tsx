@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="container py-4 flex md:flex-col md:items-center md:text-center justify-between items-start gap-3 md:gap-5 mobile:break-all">
                 <div>
                     <Link href="/" className="w-fit"><Image src={logo} className="brightness-[90000]" alt="ENairafy Logo" height={70} width={150} priority/></Link>
-                    <p>Buy your elctronics at an affodable rate with no hustle</p>
+                    <p>Buy your electronics at an affodable rate with no hustle</p>
                     <Icons />
                 </div>
                 <div className="grid gap-2">
