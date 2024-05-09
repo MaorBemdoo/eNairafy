@@ -2,8 +2,9 @@ import axios from "axios";
 import { getProducts } from "./actions/getProducts";
 import { baseUrl } from "@/constants";
 import { getDiscount } from "./actions/getDiscount";
+import { DiscountType, ProductType } from "@/types";
 
-export async function getDiscountProductsId(type: "new" | "fetch"){
+export async function getDiscountProductsId(type: "new" | "fetch"): Promise<{value: number, ids: string[]}[]>{
 
     // generate random value from 20 to 90
     const randomPercent1 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
@@ -13,8 +14,8 @@ export async function getDiscountProductsId(type: "new" | "fetch"){
     const randomPercent5 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
 
     if(type == "fetch"){
-        const content: object[] = await getDiscount()
-        return content.flatMap((discount: any) => {
+        const content = await getDiscount()
+        return content.flatMap((discount: DiscountType) => {
                 return {
                         value: discount.value,
                         ids: discount.product_ids
@@ -25,9 +26,9 @@ export async function getDiscountProductsId(type: "new" | "fetch"){
     let data = await getProducts({limit: 50})
     // console.log(response.data);
 
-    const shuffledProducts: object[] = data.data.sort(() => Math.random() - 0.5);
+    const shuffledProducts = data.data.sort(() => Math.random() - 0.5);
 
-    const randomProductIds = shuffledProducts.slice(0, 10).map((product: any) => product.id);
+    const randomProductIds: string[] = shuffledProducts.slice(0, 10).map((product: ProductType) => product.id);
 
     const randomProductId1 = {
             value: randomPercent1,

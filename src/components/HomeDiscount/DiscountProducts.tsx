@@ -4,10 +4,11 @@ import { getDiscountProducts } from "@/utils/getDiscountProducts"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Button from "../Button"
+import { ProductType } from "@/types"
 
 const DiscountProducts = () => {
 
-    const {data, isLoading, isError, error, refetch} = useQuery({
+    const {data, isLoading, isError, isSuccess, error, refetch} = useQuery({
         queryKey: ["discountProducts"],
         queryFn: getDiscountProducts
     })
@@ -15,15 +16,10 @@ const DiscountProducts = () => {
     return (
         isLoading ? (
             <div className="loading loading-spinner loading-lg flex m-auto"></div>
-        ) : isError ? (
-            <div className="grid place-items-center text-center">
-                <p>Error getting some of our discounted products</p>
-                <Button color="green" onClick={refetch}>Try Again {console.log(error)}</Button>
-            </div>
-        ) : (
+        ) : isSuccess ? (
             <div>
                 {
-                    (data as any[]).map(({name, id, image, discountValue}) => {
+                    (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, description}) => {
                         return (
                             <div className="card w-96 bg-base-100 shadow-xl" key={id}>
                                 <figure><Image src={image.url} alt="Shoes" height={60} width={60}/></figure>
@@ -32,7 +28,7 @@ const DiscountProducts = () => {
                                         {name}
                                         <div className="badge badge-secondary">{discountValue}%</div>
                                     </h2>
-                                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                                    <p>{description}</p>
                                     <div className="card-actions justify-end">
                                         <div className="badge badge-outline">Fashion</div>
                                         <div className="badge badge-outline">Products</div>
@@ -42,6 +38,11 @@ const DiscountProducts = () => {
                         )
                     })
                 }
+            </div>
+        ) : (
+            <div className="grid place-items-center text-center">
+                <p>Error getting some of our discounted products</p>
+                <Button color="green" onClick={refetch}>Try Again {console.log(error)}</Button>
             </div>
         )
     )
