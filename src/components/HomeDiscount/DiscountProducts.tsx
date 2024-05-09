@@ -7,7 +7,7 @@ import Button from "../Button"
 
 const DiscountProducts = () => {
 
-    const {data, isLoading, isError, refetch} = useQuery({
+    const {data, isLoading, isError, error, refetch} = useQuery({
         queryKey: ["discountProducts"],
         queryFn: getDiscountProducts
     })
@@ -18,19 +18,19 @@ const DiscountProducts = () => {
         ) : isError ? (
             <div className="grid place-items-center text-center">
                 <p>Error getting some of our discounted products</p>
-                <Button color="green" onClick={refetch}>Try Again</Button>
+                <Button color="green" onClick={refetch}>Try Again {console.log(error)}</Button>
             </div>
         ) : (
             <div>
                 {
-                    (data as any[]).map(({name, id, image}) => {
+                    (data as any[]).map(({name, id, image, discountValue}) => {
                         return (
                             <div className="card w-96 bg-base-100 shadow-xl" key={id}>
                                 <figure><Image src={image.url} alt="Shoes" height={60} width={60}/></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">
                                     {name}
-                                    <div className="badge badge-secondary">NEW</div>
+                                    <div className="badge badge-secondary">{discountValue}%</div>
                                     </h2>
                                     <p>If a dog chews shoes whose shoes does he choose?</p>
                                     <div className="card-actions justify-end">

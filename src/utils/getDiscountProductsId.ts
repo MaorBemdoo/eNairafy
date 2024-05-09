@@ -31,23 +31,23 @@ export async function getDiscountProductsId(type: "new" | "fetch"){
 
     const randomProductId1 = {
             value: randomPercent1,
-            productIds: randomProductIds.slice(0, 2)
+            ids: randomProductIds.slice(0, 2)
     }
     const randomProductId2 = {
             value: randomPercent2,
-            productId: randomProductIds.slice(2, 4)
+            ids: randomProductIds.slice(2, 4)
     }
     const randomProductId3 = {
             value: randomPercent3,
-            productId: randomProductIds.slice(4, 6)
+            ids: randomProductIds.slice(4, 6)
     }
     const randomProductId4 = {
             value: randomPercent4,
-            productId: randomProductIds.slice(6, 8)
+            ids: randomProductIds.slice(6, 8)
     }
     const randomProductId5 = {
             value: randomPercent5,
-            productId: randomProductIds.slice(8, 10)
+            ids: randomProductIds.slice(8, 10)
     }
 
     const totalRandomProductIds = [randomProductId1, randomProductId2, randomProductId3, randomProductId4, randomProductId5]

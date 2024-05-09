@@ -24,35 +24,35 @@ export async function createDiscount() {
 
     const res1 = await axios.post(
         "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[0].value, product_ids: discountProductsId[0].productIds}),
+        JSON.stringify({...discountBody, value: discountProductsId[0].value, product_ids: discountProductsId[0].ids}),
         {
             headers,
         }
     );
     const res2 = await axios.post(
         "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[1].value, product_ids: discountProductsId[1].productIds}),
+        JSON.stringify({...discountBody, value: discountProductsId[1].value, product_ids: discountProductsId[1].ids}),
         {
             headers,
         }
     );
     const res3 = await axios.post(
         "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[2].value, product_ids: discountProductsId[2].productIds}),
+        JSON.stringify({...discountBody, value: discountProductsId[2].value, product_ids: discountProductsId[2].ids}),
         {
             headers,
         }
     );
     const res4 = await axios.post(
         "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[3].value, product_ids: discountProductsId[3].productIds}),
+        JSON.stringify({...discountBody, value: discountProductsId[3].value, product_ids: discountProductsId[3].ids}),
         {
             headers,
         }
     );
     const res5 = await axios.post(
         "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[4].value, product_ids: discountProductsId[4].productIds}),
+        JSON.stringify({...discountBody, value: discountProductsId[4].value, product_ids: discountProductsId[4].ids}),
         {
             headers,
         }
