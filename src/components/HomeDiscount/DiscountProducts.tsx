@@ -29,13 +29,13 @@ const DiscountProducts = () => {
                                 <figure><Image src={image.url} alt="Shoes" height={60} width={60}/></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">
-                                    {name}
-                                    <div className="badge badge-secondary">{discountValue}%</div>
+                                        {name}
+                                        <div className="badge badge-secondary">{discountValue}%</div>
                                     </h2>
                                     <p>If a dog chews shoes whose shoes does he choose?</p>
                                     <div className="card-actions justify-end">
-                                    <div className="badge badge-outline">Fashion</div>
-                                    <div className="badge badge-outline">Products</div>
+                                        <div className="badge badge-outline">Fashion</div>
+                                        <div className="badge badge-outline">Products</div>
                                     </div>
                                 </div>
                             </div>
