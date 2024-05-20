@@ -5,7 +5,7 @@ import moment from "moment";
 import { getDiscountProductsId } from "../getDiscountProductsId";
 
 export async function createDiscount() {
-    const discountProductsId: any[] = await getDiscountProductsId("new");
+    const discountProductsId = await getDiscountProductsId("new");
 
     const midnight = moment().add(24, 'hours').unix();
 

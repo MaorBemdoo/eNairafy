@@ -101,12 +101,12 @@ export const ProductSchema = z.object({
 
 export const DiscountSchema = z.object({
     id: z.string(),
-    created: z.null(),
+    created: z.number(),
     code: z.string(),
     type: z.string(),
     value: z.number(),
     expires_on: z.number(),
-    starts_on: z.null(),
+    starts_on: z.number(),
     is_expired: z.boolean(),
     limit_quantity: z.boolean(),
     quantity: z.number(),

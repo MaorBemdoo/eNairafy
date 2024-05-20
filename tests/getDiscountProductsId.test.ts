@@ -27,7 +27,7 @@ describe('getDiscountProductIds Tests', () => {
     test('each discount should have value and ids property', () => {
         expect(discountProductsId).toEqual(
             expect.arrayContaining(
-                discountProductsId.map(discountProductId => expect.objectContaining({ 
+                discountProductsId.map(() => expect.objectContaining({ 
                     value: expect.any(Number), 
                     ids: expect.any(Array)
                 }))

@@ -17,7 +17,7 @@ export async function GET(req: NextRequest){
         return NextResponse.json({
             message: 'Created 5 new discounts',
             ids: discounts.map(discount => discount.id)
-        }, {status: 200})
+        }, {status: 201})
     } catch (err) {
         console.log(err)
         return NextResponse.json({

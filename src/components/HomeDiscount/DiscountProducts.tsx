@@ -19,7 +19,7 @@ const DiscountProducts = () => {
         ) : isSuccess ? (
             <div>
                 {
-                    (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, description}) => {
+                    (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, price}) => {
                         return (
                             <div className="card w-96 bg-base-100 shadow-xl" key={id}>
                                 <figure><Image src={image.url} alt="Shoes" height={60} width={60}/></figure>
@@ -28,7 +28,10 @@ const DiscountProducts = () => {
                                         {name}
                                         <div className="badge badge-secondary">{discountValue}%</div>
                                     </h2>
-                                    <p>{description}</p>
+                                    <div className="flex">
+                                        <p>{price.formatted_with_symbol}</p>
+                                        <p>₦{price.raw - (price.raw * (discountValue/100))}</p>
+                                    </div>
                                     <div className="card-actions justify-end">
                                         <div className="badge badge-outline">Fashion</div>
                                         <div className="badge badge-outline">Products</div>
