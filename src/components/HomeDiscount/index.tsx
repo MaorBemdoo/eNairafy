@@ -7,7 +7,7 @@ const HomeDiscount = () => {
         <section>
             <Image src="/daily-deals.jpg" width={500} height={200} alt="Discount banner" className="w-full mb-1"/>
             <div className="container mb-4">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between sm:flex-col sm:items-start">
                     <h1 className="mb-4 text-5xl font-bold mobile:break-all">
                         Deals of the Day
                     </h1>
