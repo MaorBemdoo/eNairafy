@@ -5,6 +5,8 @@ import Button from "./Button";
 import { CategoriesPageType, CategoriesType } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "@/utils/actions/getCategories";
+import { LuShoppingBasket } from "react-icons/lu";
+import Link from "next/link";
 
 const gCategories = async () => {
     return await getCategories();
@@ -59,8 +61,8 @@ const Categories = () => {
                                     </div>
                                 </h2>
                                 <p>{description}</p>
-                                <div className="card-actions">
-                                    <Button color="green">See Products</Button>
+                                <div className="card-actions justify-end">
+                                    <Link href="/products" className="hover:text-green-600"><LuShoppingBasket /></Link>
                                 </div>
                             </div>
                         </div>

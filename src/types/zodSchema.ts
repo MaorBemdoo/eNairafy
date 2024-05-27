@@ -59,7 +59,7 @@ export const ProductSchema = z.object({
     inventory: z.object({ managed: z.boolean(), available: z.number() }),
     sku: z.string(),
     sort_order: z.number(),
-    seo: z.object({ title: z.null(), description: z.null() }),
+    seo: z.object({ title: z.string(), description: z.string() }),
     thank_you_url: z.null(),
     meta: z.null(),
     conditionals: z.object({
@@ -95,8 +95,50 @@ export const ProductSchema = z.object({
         extra_fields: z.boolean()
     }),
     checkout_url: z.object({ checkout: z.string(), display: z.string() }),
-    categories: z.array(z.unknown()),
-    image: z.any()
+    categories: z.array(
+        z.object({ id: z.string(), slug: z.string(), name: z.string() })
+    ),
+    image: z.object({
+        id: z.string(),
+        url: z.string(),
+        description: z.null(),
+        is_image: z.boolean(),
+        filename: z.string(),
+        file_size: z.number(),
+        file_extension: z.string(),
+        image_dimensions: z.object({ width: z.number(), height: z.number() }),
+        meta: z.array(z.unknown()),
+        created_at: z.number(),
+        updated_at: z.number()
+    }),
+    attributes: z.array(
+        z.union([
+            z.object({
+                id: z.string(),
+                name: z.string(),
+                value: z.array(z.object({ value: z.string(), label: z.string() })),
+                meta: z.null()
+            }),
+            z.object({
+                id: z.string(),
+                name: z.string(),
+                value: z.string(),
+                meta: z.null()
+            }),
+            z.object({
+                id: z.string(),
+                name: z.string(),
+                value: z.null(),
+                meta: z.null()
+            }),
+            z.object({
+                id: z.string(),
+                name: z.string(),
+                value: z.array(z.object({ value: z.null(), label: z.null() })),
+                meta: z.null()
+            })
+        ])
+    )
 })
 
 export const DiscountSchema = z.object({

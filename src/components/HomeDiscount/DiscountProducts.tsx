@@ -17,24 +17,29 @@ const DiscountProducts = () => {
         isLoading ? (
             <div className="loading loading-spinner loading-lg flex m-auto"></div>
         ) : isSuccess ? (
-            <div>
+            <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4 mobile:grid-cols-none mobile:grid-flow-col">
                 {
-                    (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, price}) => {
+                    (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, price, categories}) => {
                         return (
-                            <div className="card w-96 bg-base-100 shadow-xl" key={id}>
-                                <figure><Image src={image.url} alt="Shoes" height={60} width={60}/></figure>
+                            <div className="card bg-base-100 shadow-xl" key={id}>
+                                <figure><Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">
                                         {name}
                                         <div className="badge badge-secondary">{discountValue}%</div>
                                     </h2>
-                                    <div className="flex">
-                                        <p>{price.formatted_with_symbol}</p>
-                                        <p>₦{price.raw - (price.raw * (discountValue/100))}</p>
+                                    <div className="flex justify-start">
+                                        <p className="line-through">{price.formatted_with_symbol}</p>
+                                        <p className="text-2xl text-red-700 -rotate-12">₦{Math.round(price.raw - (price.raw * (discountValue/100)))}</p>
                                     </div>
                                     <div className="card-actions justify-end">
-                                        <div className="badge badge-outline">Fashion</div>
-                                        <div className="badge badge-outline">Products</div>
+                                        {
+                                            categories.map(category => {
+                                                return (
+                                                    <div className="badge badge-outline" key={category.id}>{category.name}</div>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
                             </div>

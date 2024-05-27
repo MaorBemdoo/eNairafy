@@ -1,13 +1,13 @@
 import Link from "next/link"
 import Button from "../Button"
 import { BiCart, BiLogIn } from "react-icons/bi"
-import { GrTechnology } from "react-icons/gr"
+import { LuShoppingBasket } from "react-icons/lu"
 
 const NavLinksData = [
     {
         name: "Products",
         link: "/products",
-        Icon: GrTechnology
+        Icon: LuShoppingBasket
     },
     {
         name: "Cart",
