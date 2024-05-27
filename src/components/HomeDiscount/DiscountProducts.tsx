@@ -17,7 +17,7 @@ const DiscountProducts = () => {
         isLoading ? (
             <div className="loading loading-spinner loading-lg flex m-auto"></div>
         ) : isSuccess ? (
-            <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4 mobile:grid-cols-none mobile:grid-flow-col">
+            <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4 mobile:grid-cols-none">
                 {
                     (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, price, categories}) => {
                         return (
@@ -30,7 +30,7 @@ const DiscountProducts = () => {
                                     </h2>
                                     <div className="flex justify-start">
                                         <p className="line-through">{price.formatted_with_symbol}</p>
-                                        <p className="text-2xl text-red-700 -rotate-12">₦{Math.round(price.raw - (price.raw * (discountValue/100)))}</p>
+                                        <p className="text-2xl text-red-800 -rotate-12">₦{Math.round(price.raw - (price.raw * (discountValue/100)))}</p>
                                     </div>
                                     <div className="card-actions justify-end">
                                         {

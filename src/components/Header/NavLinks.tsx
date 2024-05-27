@@ -28,7 +28,7 @@ const NavLinksData = [
 
 const NavLinks = () => {
     return (
-        <div className="flex gap-5 items-center z-20 sm:gap-1 mobile:fixed left-0 bottom-0 mobile:w-full mobile:justify-between mobile:bg-white mobile:h-[10vh] mobile:p-4">
+        <div className="flex gap-5 items-center z-20 sm:gap-1 mobile:fixed left-0 bottom-0 mobile:w-full mobile:justify-between mobile:bg-white mobile:h-[10vh] mobile:p-4 mobile:border-t mobile:border-t-slate-950">
             {
                 NavLinksData.map(({ name, link, type, Icon}) => {
                     return (
