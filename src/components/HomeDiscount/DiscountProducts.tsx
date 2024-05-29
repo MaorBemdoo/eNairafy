@@ -22,7 +22,7 @@ const DiscountProducts = () => {
                     (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, price, categories}) => {
                         return (
                             <div className="card bg-base-100 shadow-xl" key={id}>
-                                <figure><Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/></figure>
+                                <figure><Image src={image.url} alt="Shoes" className="w-1/2 h-[150px]" height={60} width={60}/></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">
                                         {name}
