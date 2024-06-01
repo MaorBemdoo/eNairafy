@@ -21,18 +21,20 @@ const DiscountProducts = () => {
                 {
                     (data as (ProductType & {discountValue: number})[]).map(({name, id, image, discountValue, price, categories}) => {
                         return (
-                            <div className="card bg-base-100 shadow-xl" key={id}>
-                                <figure><Image src={image.url} alt="Shoes" className="w-1/2 h-[150px]" height={60} width={60}/></figure>
-                                <div className="card-body">
+                            <div className="card w-auto bg-base-100 shadow-xl" key={id}>
+                                <figure className="relative">
+                                    <Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/>
+                                    <div className="absolute top-4 right-4 size-10 grid place-items-center bg-slate-950 text-white">{discountValue}%</div>
+                                </figure>
+                                <div className="card-body *:basis-1/3">
                                     <h2 className="card-title">
                                         {name}
-                                        <div className="badge badge-secondary">{discountValue}%</div>
                                     </h2>
                                     <div className="flex justify-start">
                                         <p className="line-through">{price.formatted_with_symbol}</p>
                                         <p className="text-2xl text-red-800 -rotate-12">₦{Math.round(price.raw - (price.raw * (discountValue/100)))}</p>
                                     </div>
-                                    <div className="card-actions justify-end">
+                                    <div className="card-actions justify-end items-end">
                                         {
                                             categories.map(category => {
                                                 return (
