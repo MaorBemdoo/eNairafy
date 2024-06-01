@@ -156,3 +156,10 @@ export const DiscountSchema = z.object({
     meta: z.object({ campaign: z.string() }),
     product_ids: z.array(z.string())
 })
+
+export const PriceSchema = z.object({
+    raw: z.number(),
+    formatted: z.string(),
+    formatted_with_symbol: z.string(),
+    formatted_with_code: z.string()
+})
