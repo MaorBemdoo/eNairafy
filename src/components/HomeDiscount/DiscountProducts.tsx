@@ -24,7 +24,7 @@ const DiscountProducts = () => {
                             <div className="card w-auto bg-base-100 shadow-xl" key={id}>
                                 <figure className="relative">
                                     <Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/>
-                                    <div className="absolute top-4 right-4 size-10 grid place-items-center bg-slate-950 text-white">-{discountValue}%</div>
+                                    <div className="absolute top-4 right-4 size-10 p-4 grid place-items-center bg-slate-950 text-white">-{discountValue}%</div>
                                 </figure>
                                 <div className="card-body *:basis-1/3">
                                     <h2 className="card-title">
