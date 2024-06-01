@@ -34,7 +34,7 @@ const DiscountProducts = () => {
                                         <p className="text-2xl">{discountPrice.formatted_with_symbol}</p>
                                         <p className="line-through">{price.formatted_with_symbol}</p>
                                     </div>
-                                    <div className="card-actions justify-end items-end">
+                                    <div className="card-actions justify-end items-end gap-4">
                                         {
                                             categories.map(category => {
                                                 return (
