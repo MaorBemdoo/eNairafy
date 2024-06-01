@@ -21,5 +21,7 @@ export async function getDiscountProducts() {
 
     // console.log(updatedDiscountProducts);
 
-    return updatedDiscountProducts;
+    const shuffledDiscountProducts = updatedDiscountProducts.sort(() => Math.random() - 0.5);
+
+    return shuffledDiscountProducts
 }
