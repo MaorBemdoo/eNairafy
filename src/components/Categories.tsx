@@ -42,28 +42,30 @@ const Categories = () => {
                     return (
                         <Link
                             href="/products"
-                            className="card h-96 w-auto bg-base-100 shadow-xl hover:only:first:*:scale-125 transition-all"
+                            className="first:*:first:*:first:*:hover:scale-125 transition-all"
                             key={id}
                         >
-                            <figure>
-                                <Image
-                                    src={assets ? assets[0].url : ""}
-                                    alt={`${name} image`}
-                                    height={200}
-                                    width={250}
-                                    className="w-full h-[200px] object-cover"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title">
-                                    {name}
-                                    <div className="badge badge-secondary">
-                                        NEW
+                            <div className="card h-96 w-auto bg-base-100 shadow-xl">
+                                <figure>
+                                    <Image
+                                        src={assets ? assets[0].url : ""}
+                                        alt={`${name} image`}
+                                        height={200}
+                                        width={250}
+                                        className="w-full h-[200px] object-cover"
+                                    />
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">
+                                        {name}
+                                        <div className="badge badge-secondary">
+                                            NEW
+                                        </div>
+                                    </h2>
+                                    <p>{description}</p>
+                                    <div className="card-actions justify-end">
+                                        <LuShoppingBasket className="hover:fill-green-600" />
                                     </div>
-                                </h2>
-                                <p>{description}</p>
-                                <div className="card-actions justify-end">
-                                    <LuShoppingBasket className="hover:fill-green-600" />
                                 </div>
                             </div>
                         </Link>
