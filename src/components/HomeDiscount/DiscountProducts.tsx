@@ -32,7 +32,7 @@ const DiscountProducts = () => {
                                     </h2>
                                     <div className="flex justify-start items-center gap-4">
                                         <p className="text-2xl">{discountPrice.formatted_with_symbol}</p>
-                                        <p className="line-through">{price.formatted_with_symbol}</p>
+                                        <p className="line-through">{price.formatted_with_symbol.slice(0,-3)}</p>
                                     </div>
                                     <div className="card-actions justify-end items-end gap-4">
                                         {
