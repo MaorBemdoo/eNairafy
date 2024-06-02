@@ -40,8 +40,9 @@ const Categories = () => {
             return data.data.map(
                 ({ id, slug, name, assets, description }: CategoriesType) => {
                     return (
-                        <div
-                            className="card h-96 w-auto bg-base-100 shadow-xl"
+                        <Link
+                            href="/products"
+                            className="card h-96 w-auto bg-base-100 shadow-xl hover:only:first:*:scale-125 transition-all"
                             key={id}
                         >
                             <figure>
@@ -50,7 +51,7 @@ const Categories = () => {
                                     alt={`${name} image`}
                                     height={200}
                                     width={250}
-                                    className="w-full h-[200px] object-cover hover:scale-125 transition-all"
+                                    className="w-full h-[200px] object-cover"
                                 />
                             </figure>
                             <div className="card-body">
@@ -62,10 +63,10 @@ const Categories = () => {
                                 </h2>
                                 <p>{description}</p>
                                 <div className="card-actions justify-end">
-                                    <Link href="/products" className="hover:text-green-600"><LuShoppingBasket /></Link>
+                                    <LuShoppingBasket className="hover:fill-green-600" />
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     );
                 }
             );
