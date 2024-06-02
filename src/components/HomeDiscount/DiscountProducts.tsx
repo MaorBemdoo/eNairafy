@@ -30,7 +30,7 @@ const DiscountProducts = () => {
                                     <h2 className="card-title">
                                         {name}
                                     </h2>
-                                    <div className="flex justify-start items-center">
+                                    <div className="flex justify-start items-center gap-4">
                                         <p className="text-2xl">{discountPrice.formatted_with_symbol}</p>
                                         <p className="line-through">{price.formatted_with_symbol}</p>
                                     </div>
