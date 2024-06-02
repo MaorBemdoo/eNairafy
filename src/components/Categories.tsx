@@ -42,7 +42,7 @@ const Categories = () => {
                     return (
                         <Link
                             href="/products"
-                            className="first:*:first:*:first:*:hover:scale-125 transition-all"
+                            className="first:*:first:*:first:*:hover:scale-125"
                             key={id}
                         >
                             <div className="card h-96 w-auto bg-base-100 shadow-xl">
@@ -52,7 +52,7 @@ const Categories = () => {
                                         alt={`${name} image`}
                                         height={200}
                                         width={250}
-                                        className="w-full h-[200px] object-cover"
+                                        className="w-full h-[200px] object-cover transition-all"
                                     />
                                 </figure>
                                 <div className="card-body">
