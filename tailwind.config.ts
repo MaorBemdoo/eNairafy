@@ -28,9 +28,6 @@ const config: Config = {
       padding: "1rem"
     }
   },
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: true,
-  }
+  plugins: [require("daisyui")]
 };
 export default config;
