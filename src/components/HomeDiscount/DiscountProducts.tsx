@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Button from "../Button"
 import { PriceType, ProductType } from "@/types"
+import Link from "next/link"
 
 const DiscountProducts = () => {
 
@@ -21,30 +22,32 @@ const DiscountProducts = () => {
                 {
                     (data as (ProductType & {discountValue: number, discountPrice: PriceType})[]).map(({name, id, image, discountValue, price, discountPrice, categories}) => {
                         return (
-                            <div className="card w-auto bg-base-100 shadow-xl" key={id}>
-                                <figure className="relative">
-                                    <Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/>
-                                    <div className="absolute top-4 right-4 p-1 grid place-items-center bg-slate-950 text-white">-{discountValue}%</div>
-                                </figure>
-                                <div className="card-body *:basis-1/3">
-                                    <h2 className="card-title">
-                                        {name}
-                                    </h2>
-                                    <div className="flex justify-start items-center gap-4">
-                                        <p className="text-2xl">{discountPrice.formatted_with_symbol}</p>
-                                        <p className="line-through">{price.formatted_with_symbol.slice(0,-3)}</p>
-                                    </div>
-                                    <div className="card-actions justify-end items-end gap-4">
-                                        {
-                                            categories.map(category => {
-                                                return (
-                                                    <div className="badge badge-outline" key={category.id}>{category.name}</div>
-                                                )
-                                            })
-                                        }
+                            <Link href="/products"  key={id}>
+                                <div className="card w-auto bg-base-100 shadow-xl">
+                                    <figure className="relative">
+                                        <Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/>
+                                        <div className="absolute top-4 right-4 p-1 grid place-items-center bg-slate-950 text-white">-{discountValue}%</div>
+                                    </figure>
+                                    <div className="card-body *:basis-1/3">
+                                        <h2 className="card-title">
+                                            {name}
+                                        </h2>
+                                        <div className="flex justify-start items-center gap-4">
+                                            <p className="text-2xl">{discountPrice.formatted_with_symbol}</p>
+                                            <p className="line-through">{price.formatted_with_symbol.slice(0,-3)}</p>
+                                        </div>
+                                        <div className="card-actions justify-end items-end gap-4">
+                                            {
+                                                categories.map(category => {
+                                                    return (
+                                                        <div className="badge badge-outline" key={category.id}>{category.name}</div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     })
                 }
