@@ -32,7 +32,7 @@ const Countdown = () => {
     }, []);
 
     return (
-        <div className={`grid grid-flow-col gap-5 text-center auto-cols-max shadow-md ${hours <= 5 ? "text-red-600": ""}`}>
+        <div className={`grid grid-flow-col gap-5 text-center auto-cols-max ${hours <= 5 ? "text-red-600": ""}`}>
             <div className="flex flex-col">
                 <span className="countdown font-mono text-5xl">
                     <TimeSpan time={hours} />
