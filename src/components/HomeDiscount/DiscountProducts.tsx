@@ -1,23 +1,14 @@
-"use client"
-
 import { getDiscountProducts } from "@/utils/getDiscountProducts"
-import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Button from "../Button"
 import { PriceType, ProductType } from "@/types"
 import Link from "next/link"
 
-const DiscountProducts = () => {
+const DiscountProducts = async () => {
 
-    const {data, isLoading, isError, isSuccess, error, refetch} = useQuery({
-        queryKey: ["discountProducts"],
-        queryFn: getDiscountProducts
-    })
-
-    return (
-        isLoading ? (
-            <div className="loading loading-spinner loading-lg flex m-auto"></div>
-        ) : isSuccess ? (
+    try{
+        const data = await getDiscountProducts()
+        return (
             <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4 mobile:grid-cols-none">
                 {
                     (data as (ProductType & {discountValue: number, discountPrice: PriceType})[]).map(({name, id, image, discountValue, price, discountPrice, categories}) => {
@@ -52,12 +43,14 @@ const DiscountProducts = () => {
                     })
                 }
             </div>
-        ) : (
+        )
+    }catch(err){
+        console.log(err)
+        return (
             <div className="grid place-items-center text-center">
                 <p>Error getting some of our discounted products</p>
-                <Button color="green" onClick={refetch}>Try Again {console.log(error)}</Button>
             </div>
         )
-    )
+    }
 }
 export default DiscountProducts

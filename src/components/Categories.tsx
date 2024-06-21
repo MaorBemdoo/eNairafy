@@ -1,42 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import Button from "./Button";
 import { CategoriesPageType, CategoriesType } from "@/types";
-import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "@/utils/actions/getCategories";
 import { LuShoppingBasket } from "react-icons/lu";
 import Link from "next/link";
 
-const gCategories = async () => {
-    return await getCategories();
-};
-
-const Categories = () => {
-    const { data, error, isError, isSuccess, isLoading, refetch } = useQuery({
-        queryKey: ["categories"],
-        queryFn: gCategories,
-    });
-
-    const displayCategoriesCard = () => {
-        if (isLoading) {
-            return (
-                <div className="loading loading-spinner loading-lg place-self-center"></div>
-            );
-        }
-        if (isError) {
-            console.log(error);
-            return (
-                <div className="place-self-center text-center">
-                    <p>An Error Occured</p>
-                    <Button color="green" onClick={refetch}>
-                        Try Again
-                    </Button>
-                </div>
-            );
-        }
-        if (isSuccess) {
-            // console.log(data)
+const Categories = async () => {
+    const displayCategoriesCard = async () => {
+        try{
+            const data = await getCategories()
             return data.data.map(
                 ({ id, slug, name, assets, description }: CategoriesType) => {
                     return (
@@ -72,6 +44,13 @@ const Categories = () => {
                     );
                 }
             );
+        }catch(err){
+            console.log(err);
+            return (
+                <div className="place-self-center text-center">
+                    <p>An Error Occured</p>
+                </div>
+            );
         }
     };
 
@@ -81,7 +60,7 @@ const Categories = () => {
                 Top Categories
             </h1>
             <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4 mobile:grid-cols-none">
-                {displayCategoriesCard()}
+                {await displayCategoriesCard()}
             </div>
         </section>
     );
