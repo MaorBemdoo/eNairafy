@@ -6,13 +6,6 @@ import { DiscountType, ProductType } from "@/types";
 
 export async function getDiscountProductsId(type: "new" | "fetch"): Promise<{value: number, ids: string[]}[]>{
 
-    // generate random value from 20 to 90
-    const randomPercent1 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
-    const randomPercent2 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
-    const randomPercent3 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
-    const randomPercent4 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
-    const randomPercent5 = Math.floor(Math.random() * (90 - 20 + 1)) + 20;
-
     if(type == "fetch"){
         const content = await getDiscount()
         return content.flatMap((discount: DiscountType) => {
@@ -30,28 +23,20 @@ export async function getDiscountProductsId(type: "new" | "fetch"): Promise<{val
 
     const randomProductIds: string[] = shuffledProducts.slice(0, 10).map((product: ProductType) => product.id);
 
-    const randomProductId1 = {
-            value: randomPercent1,
-            ids: randomProductIds.slice(0, 2)
-    }
-    const randomProductId2 = {
-            value: randomPercent2,
-            ids: randomProductIds.slice(2, 4)
-    }
-    const randomProductId3 = {
-            value: randomPercent3,
-            ids: randomProductIds.slice(4, 6)
-    }
-    const randomProductId4 = {
-            value: randomPercent4,
-            ids: randomProductIds.slice(6, 8)
-    }
-    const randomProductId5 = {
-            value: randomPercent5,
-            ids: randomProductIds.slice(8, 10)
+    const generateRandomProductIds = (count = 1, array: {value: number, ids: string[]}[] = []) => {
+        if(count > 5) return array;
+        const sliceStart = (count - 1) * 2
+        const randomPercent = Math.floor(Math.random() * (90 - 20 + 1)) + 20; // generate random value from 20 to 90
+        const randomProductId = {
+                value: randomPercent,
+                ids: randomProductIds.slice(sliceStart, sliceStart + 2)
+        }
+        array.push(randomProductId)
+        count ++
+        generateRandomProductIds(count, array)
     }
 
-    const totalRandomProductIds = [randomProductId1, randomProductId2, randomProductId3, randomProductId4, randomProductId5]
+    const totalRandomProductIds = generateRandomProductIds() as {value: number, ids: string[]}[]
 
     return totalRandomProductIds;
 }
