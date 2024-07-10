@@ -3,8 +3,9 @@
 import axios from "axios";
 import moment from "moment";
 import { getDiscountProductsId } from "../getDiscountProductsId";
+import { DiscountType } from "@/types";
 
-export async function createDiscount() {
+export async function createDiscount(): Promise<DiscountType[]> {
     const discountProductsId = await getDiscountProductsId("new");
 
     const midnight = moment().add(24, 'hours').unix();
@@ -22,41 +23,22 @@ export async function createDiscount() {
         expires_on: midnight,
     };
 
-    const res1 = await axios.post(
-        "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[0].value, product_ids: discountProductsId[0].ids}),
-        {
-            headers,
-        }
-    );
-    const res2 = await axios.post(
-        "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[1].value, product_ids: discountProductsId[1].ids}),
-        {
-            headers,
-        }
-    );
-    const res3 = await axios.post(
-        "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[2].value, product_ids: discountProductsId[2].ids}),
-        {
-            headers,
-        }
-    );
-    const res4 = await axios.post(
-        "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[3].value, product_ids: discountProductsId[3].ids}),
-        {
-            headers,
-        }
-    );
-    const res5 = await axios.post(
-        "https://api.chec.io/v1/discounts",
-        JSON.stringify({...discountBody, value: discountProductsId[4].value, product_ids: discountProductsId[4].ids}),
-        {
-            headers,
-        }
-    );
+    const createDiscountRecur = async (count = 0, array: DiscountType[] = []) => {
+        if(count > 5) return array;
+        const id = count-1
+        const res = await axios.post(
+            "https://api.chec.io/v1/discounts",
+            JSON.stringify({...discountBody, value: discountProductsId[id].value, product_ids: discountProductsId[id].ids}),
+            {
+                headers,
+            }
+        );
+        const data: DiscountType = await res.data
+        array.push(data)
+        count++
+        await createDiscountRecur(count, array)
+    }
 
-    return [res1.data, res2.data, res3.data, res4.data, res5.data]
+    const res = await createDiscountRecur() as DiscountType[]
+    return res
 }
