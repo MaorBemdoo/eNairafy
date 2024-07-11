@@ -16,7 +16,7 @@ const DiscountProducts = async () => {
                             <Link href="/products"  key={id}>
                                 <div className="card w-auto h-full bg-base-100 shadow-xl">
                                     <figure className="relative">
-                                        <Image src={image.url} alt="Shoes" className="w-1/2" height={60} width={60}/>
+                                        <Image src={image.url} alt={`Image of ${name}`} className="w-1/2" height={60} width={60}/>
                                         <div className="absolute top-4 right-4 p-1 grid place-items-center bg-slate-950 text-white">-{discountValue}%</div>
                                     </figure>
                                     <div className="card-body *:basis-1/3">
