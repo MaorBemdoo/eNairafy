@@ -23,7 +23,7 @@ export async function createDiscount(): Promise<DiscountType[]> {
         expires_on: midnight,
     };
 
-    const createDiscountRecur = async (count = 1, array: DiscountType[] = []) => {
+    const createDiscountRecur = async (count = 0, array: DiscountType[] = []) => {
         if(count > 5) return array;
         const id = count-1
         const res = await axios.post(
@@ -35,8 +35,10 @@ export async function createDiscount(): Promise<DiscountType[]> {
         );
         const data: DiscountType = await res.data
         array.push(data)
-        return createDiscountRecur(count + 1, array)
+        count++
+        createDiscountRecur(count, array)
     }
 
-    return createDiscountRecur()
+    const res = await createDiscountRecur() as DiscountType[]
+    return res
 }
