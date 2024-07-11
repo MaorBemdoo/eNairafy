@@ -32,11 +32,10 @@ export async function getDiscountProductsId(type: "new" | "fetch"): Promise<{val
                 ids: randomProductIds.slice(sliceStart, sliceStart + 2)
         }
         array.push(randomProductId)
-        count ++
-        generateRandomProductIds(count, array)
+        return generateRandomProductIds(count + 1, array)
     }
 
-    const totalRandomProductIds = generateRandomProductIds() as {value: number, ids: string[]}[]
+    const totalRandomProductIds = generateRandomProductIds()
 
     return totalRandomProductIds;
 }

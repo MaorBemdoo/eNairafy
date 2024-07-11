@@ -35,10 +35,9 @@ export async function createDiscount(): Promise<DiscountType[]> {
         );
         const data: DiscountType = await res.data
         array.push(data)
-        count++
-        createDiscountRecur(count, array)
+        return createDiscountRecur(count + 1, array)
     }
 
-    const res = await createDiscountRecur() as DiscountType[]
+    const res = await createDiscountRecur()
     return res
 }
