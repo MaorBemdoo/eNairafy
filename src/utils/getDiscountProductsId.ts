@@ -23,7 +23,7 @@ export async function getDiscountProductsId(type: "new" | "fetch"): Promise<{val
 
     const randomProductIds: string[] = shuffledProducts.slice(0, 10).map((product: ProductType) => product.id);
 
-    const generateRandomProductIds = (count = 1, array: {value: number, ids: string[]}[] = []) => {
+    const generateRandomProductIds = (count = 1, array: {value: number, ids: string[]}[] = []): {value: number, ids: string[]}[] => {
         if(count > 5) return array;
         const sliceStart = (count - 1) * 2
         const randomPercent = Math.floor(Math.random() * (90 - 20 + 1)) + 20; // generate random value from 20 to 90
